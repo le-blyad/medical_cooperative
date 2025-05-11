@@ -192,21 +192,28 @@ h1, h2, h3 {
     color: white;
     padding: 0.8em 1.5em;
     border-radius: 8px;
-    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s
 }
 
 .action-button.install {
-    background-color: #1dae3f;
+    background-color: #00c02a;
 }
 
 .action-button.install:hover {
-    background-color: #1c8032;
+    background-color: #007a1b;
 }
 
 .action-button.uninstall {
-    background-color: #dc3041;
+    background-color: #be0013;
 }
 
 .action-button.uninstall:hover {
-    background-color: #c32030;
+    background-color: #7a000c;
+}
+
+.status-text-db{
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
 }

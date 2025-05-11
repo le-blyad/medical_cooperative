@@ -14,5 +14,5 @@ if (!$db->multi_query($sql)) {
     die("Ошибка импорта SQL: " . $db->error);
 }
 ?>
-<p> Установка завершена! </p>
+<p class="status-text-db"> Установка завершена! </p>
 <?php $db->close(); ?>

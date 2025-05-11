@@ -7,5 +7,5 @@ if (!$db->query("DROP DATABASE IF EXISTS medical_cooperative")) {
     die("Ошибка удаления БД: " . $db->error);
 }
 ?>
-<p> База данных удалена! </p>
+<p class="status-text-db"> База данных удалена! </p>
 <?php $db->close(); ?>
