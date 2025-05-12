@@ -13,9 +13,9 @@
                 <h3>Быстрые ссылки</h3>
                 <ul>
                     <li><a href="index.php">Главная</a></li>
-                    <li><a href="pages/patients.php">Пациенты</a></li>
-                    <li><a href="pages/doctors.php">Врачи</a></li>
-                    <li><a href="pages/reports.php">Отчеты</a></li>
+                    <li><a href="pages/patients/patients.php">Пациенты</a></li>
+                    <li><a href="pages/doctors/doctors.php">Врачи</a></li>
+                    <li><a href="pages/reports/reports.php">Отчеты</a></li>
                 </ul>
             </div>
             
@@ -27,7 +27,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>Лабораторная работа №3</p>
+            <p>Лабораторная работа №3-4</p>
         </div>
     </footer>
     

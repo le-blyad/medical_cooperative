@@ -1,6 +1,6 @@
 <?php
-require_once '../../includes/config.php';
 require_once '../../includes/header.php';
+require_once '../../includes/config.php';
 
 // Получаем списки для фильтров
 $doctors = $conn->query("SELECT id, CONCAT(last_name, ' ', first_name, ' ', patronymic) as name FROM doctor ORDER BY last_name")->fetch_all(MYSQLI_ASSOC);

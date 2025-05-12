@@ -1,6 +1,6 @@
 <?php
-require_once '../../includes/config.php';
 require_once '../../includes/header.php';
+require_once '../../includes/config.php';
 
 $sql = "SELECT p.*, g.gen as gender_name, bt.type as blood_type_name 
         FROM patient p

@@ -1,6 +1,6 @@
 <?php
-require_once '../../includes/config.php';
 require_once '../../includes/header.php';
+require_once '../../includes/config.php';
 
 $sql = "SELECT 
             p.last_name as patient_last_name, 

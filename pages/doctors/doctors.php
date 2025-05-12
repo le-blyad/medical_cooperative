@@ -1,6 +1,6 @@
 <?php
-require_once '../../includes/config.php';
 require_once '../../includes/header.php';
+require_once '../../includes/config.php';
 
 $sql = "SELECT d.*, s.string as specialization_name, p.string as post_name 
         FROM doctor d
