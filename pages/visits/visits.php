@@ -13,14 +13,15 @@ $sql = "SELECT
             v.office_in_hospital,
             sym.symptom,
             diag.string as diagnosis,
-            pres.name_prescription as prescription
+            pres.name_prescription as prescription,
+            v.id
         FROM visit v
         JOIN patient p ON v.patient = p.id
         JOIN doctor d ON v.doctor = d.id
         JOIN symptoms_patients sym ON v.symptoms = sym.id
         JOIN diagnosis diag ON v.diagnosis = diag.id
         JOIN prescription pres ON v.prescription = pres.id
-        ORDER BY v.date_visit DESC";
+        ORDER BY v.id ASC";
 
 $result = $conn->query($sql);
 
@@ -33,6 +34,7 @@ if (!$result) {
 <table class="table">
     <thead>
         <tr>
+            <th>Номер посещения</th>
             <th>Пациент</th>
             <th>Врач</th>
             <th>Дата посещения</th>
@@ -49,6 +51,7 @@ if (!$result) {
             $office = $row['office_in_hospital'] ?? 'На дому';
         ?>
             <tr>
+                <td><?= htmlspecialchars($row['id']) ?></td>
                 <td><?= htmlspecialchars($row['patient_last_name']) ?> <?= htmlspecialchars($row['patient_first_name']) ?> <?= htmlspecialchars($row['patient_patronymic']) ?></td>
                 <td><?= htmlspecialchars($row['doctor_last_name']) ?> <?= htmlspecialchars($row['doctor_first_name']) ?> <?= htmlspecialchars($row['doctor_patronymic']) ?></td>
                 <td><?= htmlspecialchars($formatted_date) ?></td>

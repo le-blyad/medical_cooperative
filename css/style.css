@@ -231,3 +231,29 @@ h1, h2, h3 {
     font-weight: 600;
     margin-top: 20px;
 }
+
+select {
+    padding: 0.5em 0.8em;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 12px;
+}
+
+select:focus {
+    border-color: #2563EB;
+    outline: none;
+}
+
+input {
+    padding: 0.5em 0.8em;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #2563EB;
+    outline: none;
+}
