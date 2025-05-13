@@ -75,7 +75,7 @@ INSERT INTO `diagnosis` (`id`, `string`) VALUES
 --
 
 CREATE TABLE `doctor` (
-  `id` int(11) NOT NULL,
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `last_name` varchar(50) DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `patronymic` varchar(50) DEFAULT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE `doctor` (
   `email` varchar(50) DEFAULT NULL,
   `specialization` int(11) DEFAULT NULL,
   `post` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=11;
 
 --
 -- Дамп данных таблицы `doctor`
@@ -239,7 +239,7 @@ INSERT INTO `passport` (`id`, `series`, `number`, `issued_by_whom`) VALUES
 --
 
 CREATE TABLE `patient` (
-  `id` int(11) NOT NULL,
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `last_name` varchar(20) DEFAULT NULL,
   `first_name` varchar(20) DEFAULT NULL,
   `patronymic` varchar(20) DEFAULT NULL,
@@ -253,7 +253,7 @@ CREATE TABLE `patient` (
   `phone_number` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `blood_type` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=16;
 
 --
 -- Дамп данных таблицы `patient`
@@ -282,10 +282,10 @@ INSERT INTO `patient` (`id`, `last_name`, `first_name`, `patronymic`, `gender`, 
 -- Структура таблицы `post`
 --
 
-CREATE TABLE `post` (
-  `id` int(11) NOT NULL,
-  `string` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE post (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  string VARCHAR(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=7;
 
 --
 -- Дамп данных таблицы `post`
@@ -297,7 +297,7 @@ INSERT INTO `post` (`id`, `string`) VALUES
 (3, 'Участковый врач'),
 (4, 'Заведующий отделением'),
 (5, 'Интерн'),
-(9, 'Старший врач');
+(6, 'Старший врач');
 
 -- --------------------------------------------------------
 
@@ -308,7 +308,7 @@ INSERT INTO `post` (`id`, `string`) VALUES
 CREATE TABLE `prescription` (
   `id` int(11) NOT NULL,
   `name_prescription` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=6;
 
 --
 -- Дамп данных таблицы `prescription`
@@ -330,7 +330,7 @@ INSERT INTO `prescription` (`id`, `name_prescription`) VALUES
 CREATE TABLE `specialization` (
   `id` int(11) NOT NULL,
   `string` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=11;
 
 --
 -- Дамп данных таблицы `specialization`
@@ -357,7 +357,7 @@ INSERT INTO `specialization` (`id`, `string`) VALUES
 CREATE TABLE `symptoms_patients` (
   `id` int(11) NOT NULL,
   `symptom` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=16;
 
 --
 -- Дамп данных таблицы `symptoms_patients`
@@ -598,7 +598,7 @@ ALTER TABLE `patient`
 -- AUTO_INCREMENT для таблицы `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `prescription`
