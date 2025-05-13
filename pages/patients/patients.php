@@ -11,6 +11,9 @@ $result = $conn->query($sql);
 ?>
 
 <h2>Список пациентов</h2>
+<a class="button_change-add" href="pages/patients/patients_insert.php">Добавить</a>
+
+<?php if ($result->num_rows > 0): ?>
 <table class="table">
     <thead>
         <tr>
@@ -19,6 +22,7 @@ $result = $conn->query($sql);
             <th>Дата рождения</th>
             <th>Группа крови</th>
             <th>Телефон</th>
+            <th colspan="2"></th>
         </tr>
     </thead>
     <tbody>
@@ -29,9 +33,21 @@ $result = $conn->query($sql);
             <td><?= $row['data_of_birth'] ?></td>
             <td><?= $row['blood_type_name'] ?></td>
             <td><?= $row['phone_number'] ?></td>
+            <td>
+                <a class="button_change-update" href="pages/patients/patients_update.php?id=<?= $row['id'] ?>">Изменить</a>
+            </td>
+            <td>
+                <a class="button_change-delete" href="pages/patients/patients_delete.php?id=<?= $row['id'] ?>" 
+                onclick="return confirm('Вы уверены, что хотите удалить?')">Удалить</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
+<?php else: ?>
+    <p>Пациенты не найдены.</p>
+<?php endif;
 
-<?php require_once '../../includes/footer.php'; ?>
+$conn->close();
+require_once '../../includes/footer.php';
+?>
