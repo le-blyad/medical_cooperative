@@ -176,13 +176,13 @@ h1, h2, h3 {
     margin-top: 2rem;
 }
 
-.main-statusdb{
+.main-interaction_block{
     width: 100%;
     justify-content: center;
     display: flex;
 }
 
-.statusdb {
+.interaction_block {
     text-align: center;
     width: fit-content;
     display: flex;

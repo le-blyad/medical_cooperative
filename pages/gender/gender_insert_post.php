@@ -1,12 +1,12 @@
 <?php
 require_once '../../includes/config.php';
 
-$type = $_POST['type'];
-$stmt = $conn->prepare("INSERT INTO blood_type (type) VALUES (?)");
-$stmt->bind_param("s", $type);
+$gen = $_POST['gen'];
+$stmt = $conn->prepare("INSERT INTO gender (gen) VALUES (?)");
+$stmt->bind_param("s", $gen);
 
 if ($stmt->execute()) {
-    header("Location: blood_type.php");
+    header("Location: gender.php");
     exit();
 } else {
     echo "<p>Ошибка при добавлении: " . $conn->error . "</p>";

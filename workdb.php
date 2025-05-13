@@ -2,8 +2,8 @@
 require_once 'includes/header.php';
 ?>
 
-    <div class="main-statusdb">
-        <div class="statusdb">
+    <div class="main-interaction_block">
+        <div class="interaction_block">
                 <h2>Что сделать с Базой данных?</h2>
                 <div class="button-container">
                     <form method="post">
