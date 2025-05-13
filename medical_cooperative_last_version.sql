@@ -3,13 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 13 2025 г., 23:18
+-- Время создания: Май 11 2025 г., 17:00
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+07:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -66,11 +66,7 @@ INSERT INTO `diagnosis` (`id`, `string`) VALUES
 (2, 'Пневмония'),
 (3, 'Гипертония'),
 (4, 'Гастрит'),
-(5, 'Сахарный диабет 2 типа'),
-(6, 'Гепатит'),
-(7, 'Дерматит'),
-(8, 'Цинготуха'),
-(9, 'Желтуха');
+(5, 'Сахарный диабет 2 типа');
 
 -- --------------------------------------------------------
 
@@ -79,7 +75,7 @@ INSERT INTO `diagnosis` (`id`, `string`) VALUES
 --
 
 CREATE TABLE `doctor` (
-  `id` int(11) NOT NULL,
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `last_name` varchar(50) DEFAULT NULL,
   `first_name` varchar(50) DEFAULT NULL,
   `patronymic` varchar(50) DEFAULT NULL,
@@ -88,7 +84,7 @@ CREATE TABLE `doctor` (
   `email` varchar(50) DEFAULT NULL,
   `specialization` int(11) DEFAULT NULL,
   `post` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=11;
 
 --
 -- Дамп данных таблицы `doctor`
@@ -113,8 +109,9 @@ INSERT INTO `doctor` (`id`, `last_name`, `first_name`, `patronymic`, `date_of_bi
 --
 
 CREATE TABLE `gender` (
-  `id` int(11) NOT NULL,
-  `gen` varchar(50) DEFAULT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gen` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -242,7 +239,7 @@ INSERT INTO `passport` (`id`, `series`, `number`, `issued_by_whom`) VALUES
 --
 
 CREATE TABLE `patient` (
-  `id` int(11) NOT NULL,
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `last_name` varchar(20) DEFAULT NULL,
   `first_name` varchar(20) DEFAULT NULL,
   `patronymic` varchar(20) DEFAULT NULL,
@@ -256,7 +253,7 @@ CREATE TABLE `patient` (
   `phone_number` varchar(20) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `blood_type` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=16;
 
 --
 -- Дамп данных таблицы `patient`
@@ -277,9 +274,7 @@ INSERT INTO `patient` (`id`, `last_name`, `first_name`, `patronymic`, `gender`, 
 (12, 'Зайцев', 'Роман', 'Михайлович', 1, '1986-05-11', 'г. Барнаул, ул. Гоголя 6', 'г. Барнаул, ул. Гоголя 6', 13, '456-789-123 99', 'ООО АлтайЭлектро', '+7 (915) 666-00-22', 'zaytsev.roman@yandex.ru', 2),
 (13, 'Лебедева', 'Наталья', 'Евгеньевна', 2, '1997-07-19', 'г. Барнаул, ул. Лазурная 15', 'г. Барнаул, ул. Лазурная 15', 14, '908-807-607 50', 'ООО ТурСервис', '+7 (916) 444-99-88', 'lebedeva.natasha@mail.ru', 1),
 (14, 'Николаев', 'Виктор', 'Анатольевич', 1, '1983-12-25', 'г. Барнаул, ул. Революции 55', 'г. Барнаул, ул. Революции 55', 15, '743-322-111 18', 'АО БарнаулГаз', '+7 (917) 333-11-77', 'nikolaev.viktor@mail.ru', 4),
-(15, 'Петрова', 'Светлана', 'Дмитриевна', 2, '1991-03-07', 'г. Барнаул, ул. Титова 88', 'г. Барнаул, ул. Титова 88', 16, '331-776-880 14', 'ИП \"Петрова С.Д.\"', '+7 (919) 222-00-55', 'sv.petrova@mail.ru', 3),
-(16, 'ОН', 'НИКОГДА', 'НЕ БОЛЕЛ', 2, '2025-05-14', NULL, NULL, NULL, NULL, NULL, '111111111', NULL, 1),
-(17, 'ОНА', 'НИКОГДА', 'НЕ БОЛЕЛА', 1, '2025-05-14', NULL, NULL, NULL, NULL, NULL, '22222222', NULL, 8);
+(15, 'Петрова', 'Светлана', 'Дмитриевна', 2, '1991-03-07', 'г. Барнаул, ул. Титова 88', 'г. Барнаул, ул. Титова 88', 16, '331-776-880 14', 'ИП \"Петрова С.Д.\"', '+7 (919) 222-00-55', 'sv.petrova@mail.ru', 3);
 
 -- --------------------------------------------------------
 
@@ -287,10 +282,10 @@ INSERT INTO `patient` (`id`, `last_name`, `first_name`, `patronymic`, `gender`, 
 -- Структура таблицы `post`
 --
 
-CREATE TABLE `post` (
-  `id` int(11) NOT NULL,
-  `string` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+CREATE TABLE post (
+  id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  string VARCHAR(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=7;
 
 --
 -- Дамп данных таблицы `post`
@@ -313,7 +308,7 @@ INSERT INTO `post` (`id`, `string`) VALUES
 CREATE TABLE `prescription` (
   `id` int(11) NOT NULL,
   `name_prescription` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=6;
 
 --
 -- Дамп данных таблицы `prescription`
@@ -335,7 +330,7 @@ INSERT INTO `prescription` (`id`, `name_prescription`) VALUES
 CREATE TABLE `specialization` (
   `id` int(11) NOT NULL,
   `string` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=11;
 
 --
 -- Дамп данных таблицы `specialization`
@@ -362,7 +357,7 @@ INSERT INTO `specialization` (`id`, `string`) VALUES
 CREATE TABLE `symptoms_patients` (
   `id` int(11) NOT NULL,
   `symptom` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=16;
 
 --
 -- Дамп данных таблицы `symptoms_patients`
@@ -446,38 +441,106 @@ INSERT INTO `visit` (`id`, `patient`, `doctor`, `date_visit`, `office_in_hospita
 --
 -- Индексы таблицы `blood_type`
 --
-ALTER TABLE `blood_type`
+
+ALTER TABLE `blood_type` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `diagnosis`
 --
 ALTER TABLE `diagnosis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `doctor`
 --
 ALTER TABLE `doctor`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `specialization` (`specialization`,`post`),
+  ADD KEY `post` (`post`);
+  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `gender`
 --
-ALTER TABLE `gender`
+ALTER TABLE `gender` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
+--
+-- Индексы таблицы `medicine`
+--
+ALTER TABLE `medicine`
+  ADD PRIMARY KEY (`id`);
+  ON DELETE SET NULL;
+
+--
+-- Индексы таблицы `name_of_the_medicine`
+--
+ALTER TABLE `name_of_the_medicine`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `visit` (`visit`,`medicine`),
+  ADD KEY `medicine` (`medicine`);
+  ON DELETE SET NULL;
+
+--
+-- Индексы таблицы `passport`
+--
+ALTER TABLE `passport`
+  ADD PRIMARY KEY (`id`);
+  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `patient`
 --
 ALTER TABLE `patient`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `gender` (`gender`,`reg_address`,`passport`,`blood_type`),
+  ADD KEY `passport` (`passport`),
+  ADD KEY `blood_type` (`blood_type`);
+  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `post`
 --
 ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `prescription`
+--
+ALTER TABLE `prescription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `specialization`
+--
+ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Индексы таблицы `symptoms_patients`
+--
+ALTER TABLE `symptoms_patients`
+  ADD PRIMARY KEY (`id`);
+  ON DELETE SET NULL;
+
+--
+-- Индексы таблицы `visit`
+--
+ALTER TABLE `visit`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `symptoms` (`symptoms`,`diagnosis`,`prescription`),
+  ADD KEY `patient` (`patient`),
+  ADD KEY `doctor` (`doctor`),
+  ADD KEY `diagnosis` (`diagnosis`),
+  ADD KEY `location` (`office_in_hospital`),
+  ADD KEY `prescription` (`prescription`);
+  ON DELETE SET NULL;
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -486,20 +549,20 @@ ALTER TABLE `post`
 --
 -- AUTO_INCREMENT для таблицы `blood_type`
 --
-ALTER TABLE `blood_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `blood_type` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `diagnosis`
 --
 ALTER TABLE `diagnosis`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT для таблицы `gender`
@@ -508,16 +571,94 @@ ALTER TABLE `gender`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT для таблицы `medicine`
+--
+ALTER TABLE `medicine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT для таблицы `name_of_the_medicine`
+--
+ALTER TABLE `name_of_the_medicine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT для таблицы `passport`
+--
+ALTER TABLE `passport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
 -- AUTO_INCREMENT для таблицы `patient`
 --
 ALTER TABLE `patient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT для таблицы `post`
 --
 ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT для таблицы `prescription`
+--
+ALTER TABLE `prescription`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT для таблицы `specialization`
+--
+ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT для таблицы `symptoms_patients`
+--
+ALTER TABLE `symptoms_patients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT для таблицы `visit`
+--
+ALTER TABLE `visit`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `doctor`
+--
+ALTER TABLE `doctor`
+  ADD CONSTRAINT `doctor_ibfk_1` FOREIGN KEY (`specialization`) REFERENCES `specialization` (`id`),
+  ADD CONSTRAINT `doctor_ibfk_2` FOREIGN KEY (`post`) REFERENCES `post` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `name_of_the_medicine`
+--
+ALTER TABLE `name_of_the_medicine`
+  ADD CONSTRAINT `name_of_the_medicine_ibfk_1` FOREIGN KEY (`visit`) REFERENCES `visit` (`id`),
+  ADD CONSTRAINT `name_of_the_medicine_ibfk_2` FOREIGN KEY (`medicine`) REFERENCES `medicine` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `patient`
+--
+ALTER TABLE `patient`
+  ADD CONSTRAINT `patient_ibfk_1` FOREIGN KEY (`gender`) REFERENCES `gender` (`id`),
+  ADD CONSTRAINT `patient_ibfk_2` FOREIGN KEY (`passport`) REFERENCES `passport` (`id`),
+  ADD CONSTRAINT `patient_ibfk_3` FOREIGN KEY (`blood_type`) REFERENCES `blood_type` (`id`);
+
+--
+-- Ограничения внешнего ключа таблицы `visit`
+--
+ALTER TABLE `visit`
+  ADD CONSTRAINT `visit_ibfk_1` FOREIGN KEY (`patient`) REFERENCES `patient` (`id`),
+  ADD CONSTRAINT `visit_ibfk_2` FOREIGN KEY (`doctor`) REFERENCES `doctor` (`id`),
+  ADD CONSTRAINT `visit_ibfk_3` FOREIGN KEY (`diagnosis`) REFERENCES `diagnosis` (`id`),
+  ADD CONSTRAINT `visit_ibfk_5` FOREIGN KEY (`symptoms`) REFERENCES `symptoms_patients` (`id`),
+  ADD CONSTRAINT `visit_ibfk_6` FOREIGN KEY (`prescription`) REFERENCES `prescription` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

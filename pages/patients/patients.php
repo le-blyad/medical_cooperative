@@ -11,7 +11,13 @@ $result = $conn->query($sql);
 ?>
 
 <h2>Список пациентов</h2>
-<a class="button_change-add" href="pages/patients/patients_insert.php">Добавить</a>
+<a class="btn" href="pages/patients/patients_insert.php">Добавить</a>
+
+<form method="post" action="pages/patients/clean_patients.php" style="display:inline;">
+    <button type="submit" class="btn" onclick="return confirm('Удалить всех неактивных пациентов?')"> 
+        Удалить неактивных пациентов
+    </button>
+</form>
 
 <?php if ($result->num_rows > 0): ?>
 <table class="table">
@@ -34,11 +40,8 @@ $result = $conn->query($sql);
             <td><?= $row['blood_type_name'] ?></td>
             <td><?= $row['phone_number'] ?></td>
             <td>
-                <a class="button_change-update" href="pages/patients/patients_update.php?id=<?= $row['id'] ?>">Изменить</a>
-            </td>
-            <td>
-                <a class="button_change-delete" href="pages/patients/patients_delete.php?id=<?= $row['id'] ?>" 
-                onclick="return confirm('Вы уверены, что хотите удалить?')">Удалить</a>
+                <a href="pages/patients/patients_update.php?id=<?= $row['id'] ?>">Изменить</a> | 
+                <a href="pages/patients/patients_delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Вы уверены, что хотите удалить?')">Удалить</a>
             </td>
         </tr>
         <?php endwhile; ?>

@@ -11,6 +11,9 @@ $result = $conn->query($sql);
 ?>
 
 <h2>Список врачей</h2>
+<a href="pages/doctors/doctors_insert.php" class="btn">Добавить</a>
+
+<?php if ($result->num_rows > 0): ?>
 <table class="table">
     <thead>
         <tr>
@@ -20,6 +23,7 @@ $result = $conn->query($sql);
             <th>Эл.Почта</th>
             <th>Специализация</th>
             <th>Должность</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>
@@ -31,9 +35,18 @@ $result = $conn->query($sql);
             <td><?= htmlspecialchars($row['email']) ?></td>
             <td><?= htmlspecialchars($row['specialization_name']) ?></td>
             <td><?= htmlspecialchars($row['post_name']) ?></td>
+            <td>
+                <a href="pages/doctors/doctors_update.php?id=<?= $row['id'] ?>">Изменить</a> | 
+                <a href="pages/doctors/doctors_delete.php?id=<?= $row['id'] ?>" onclick="return confirm('Удалить врача?')">Удалить</a>
+            </td>
         </tr>
         <?php endwhile; ?>
     </tbody>
 </table>
+<?php else: ?>
+    <p>Врачи не найдены.</p>
+<?php endif;
 
-<?php require_once '../../includes/footer.php'; ?>
+$conn->close();
+require_once '../../includes/footer.php';
+?>

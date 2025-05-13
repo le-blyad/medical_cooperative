@@ -7,7 +7,13 @@ $result = $conn->query($sql);
 ?>
 
 <h2>Список диагнозов</h2>
-<a class="button_change-add" href="pages/diagnosis/diagnosis_insert.php">Добавить</a>
+<a class="btn" href="pages/diagnosis/diagnosis_insert.php">Добавить</a>
+
+<form method="post" action="pages/diagnosis/update_diagnoses.php" style="display:inline;">
+    <button type="submit" class="btn" onclick="return confirm('Обновить все диагнозы по новым правилам?')">
+        Обновить классификацию
+    </button>
+</form>
 
 <?php if ($result->num_rows > 0): ?>
     <table class="table">
