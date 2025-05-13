@@ -9,7 +9,7 @@
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
-SET time_zone = "+00:00";
+SET time_zone = "+07:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `blood_type` (
   `id` int(11) NOT NULL,
-  `type` varchar(50) NOT NULL
+  `type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -54,7 +54,7 @@ INSERT INTO `blood_type` (`id`, `type`) VALUES
 
 CREATE TABLE `diagnosis` (
   `id` int(11) NOT NULL,
-  `string` varchar(50) NOT NULL
+  `string` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -76,14 +76,14 @@ INSERT INTO `diagnosis` (`id`, `string`) VALUES
 
 CREATE TABLE `doctor` (
   `id` int(11) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `patronymic` varchar(50) NOT NULL,
-  `date_of_birth` date NOT NULL,
-  `number_phone` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `specialization` int(11) NOT NULL,
-  `post` int(11) NOT NULL
+  `last_name` varchar(50) DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `patronymic` varchar(50) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `number_phone` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `specialization` int(11) DEFAULT NULL,
+  `post` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -109,8 +109,9 @@ INSERT INTO `doctor` (`id`, `last_name`, `first_name`, `patronymic`, `date_of_bi
 --
 
 CREATE TABLE `gender` (
-  `id` int(11) NOT NULL,
-  `gen` varchar(50) NOT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gen` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -118,8 +119,8 @@ CREATE TABLE `gender` (
 --
 
 INSERT INTO `gender` (`id`, `gen`) VALUES
-(2, 'Женский'),
-(1, 'Мужской');
+(1, 'Женский'),
+(2, 'Мужской');
 
 -- --------------------------------------------------------
 
@@ -129,10 +130,10 @@ INSERT INTO `gender` (`id`, `gen`) VALUES
 
 CREATE TABLE `medicine` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `application` text NOT NULL,
-  `action` text NOT NULL,
-  `effect` text NOT NULL
+  `name` varchar(50) DEFAULT NULL,
+  `application` text DEFAULT NULL,
+  `action` text DEFAULT NULL,
+  `effect` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -159,10 +160,10 @@ INSERT INTO `medicine` (`id`, `name`, `application`, `action`, `effect`) VALUES
 
 CREATE TABLE `name_of_the_medicine` (
   `id` int(11) NOT NULL,
-  `visit` int(11) NOT NULL,
-  `medicine` int(11) NOT NULL,
-  `dosage` varchar(50) NOT NULL,
-  `duration_of_admission` varchar(50) NOT NULL
+  `visit` int(11) DEFAULT NULL,
+  `medicine` int(11) DEFAULT NULL,
+  `dosage` varchar(50) DEFAULT NULL,
+  `duration_of_admission` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -204,9 +205,9 @@ INSERT INTO `name_of_the_medicine` (`id`, `visit`, `medicine`, `dosage`, `durati
 
 CREATE TABLE `passport` (
   `id` int(11) NOT NULL,
-  `series` int(11) NOT NULL,
-  `number` int(11) NOT NULL,
-  `issued_by_whom` text NOT NULL
+  `series` int(11) DEFAULT NULL,
+  `number` int(11) DEFAULT NULL,
+  `issued_by_whom` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -239,19 +240,19 @@ INSERT INTO `passport` (`id`, `series`, `number`, `issued_by_whom`) VALUES
 
 CREATE TABLE `patient` (
   `id` int(11) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `first_name` varchar(20) NOT NULL,
-  `patronymic` varchar(20) NOT NULL,
+  `last_name` varchar(20) DEFAULT NULL,
+  `first_name` varchar(20) DEFAULT NULL,
+  `patronymic` varchar(20) DEFAULT NULL,
   `gender` int(11) NOT NULL,
-  `data_of_birth` date NOT NULL,
-  `reg_address` varchar(50) NOT NULL,
-  `resid_address` varchar(50) NOT NULL,
-  `passport` int(11) NOT NULL,
-  `insurance_policy` varchar(50) NOT NULL,
-  `organization` varchar(50) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `blood_type` int(11) NOT NULL
+  `data_of_birth` date DEFAULT NULL,
+  `reg_address` varchar(50) DEFAULT NULL,
+  `resid_address` varchar(50) DEFAULT NULL,
+  `passport` int(11) DEFAULT NULL,
+  `insurance_policy` varchar(50) DEFAULT NULL,
+  `organization` varchar(50) DEFAULT NULL,
+  `phone_number` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `blood_type` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -283,7 +284,7 @@ INSERT INTO `patient` (`id`, `last_name`, `first_name`, `patronymic`, `gender`, 
 
 CREATE TABLE `post` (
   `id` int(11) NOT NULL,
-  `string` varchar(50) NOT NULL
+  `string` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -306,7 +307,7 @@ INSERT INTO `post` (`id`, `string`) VALUES
 
 CREATE TABLE `prescription` (
   `id` int(11) NOT NULL,
-  `name_prescription` text NOT NULL
+  `name_prescription` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -328,7 +329,7 @@ INSERT INTO `prescription` (`id`, `name_prescription`) VALUES
 
 CREATE TABLE `specialization` (
   `id` int(11) NOT NULL,
-  `string` varchar(50) NOT NULL
+  `string` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -355,7 +356,7 @@ INSERT INTO `specialization` (`id`, `string`) VALUES
 
 CREATE TABLE `symptoms_patients` (
   `id` int(11) NOT NULL,
-  `symptom` text NOT NULL
+  `symptom` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -387,13 +388,13 @@ INSERT INTO `symptoms_patients` (`id`, `symptom`) VALUES
 
 CREATE TABLE `visit` (
   `id` int(11) NOT NULL,
-  `patient` int(11) NOT NULL,
-  `doctor` int(11) NOT NULL,
-  `date_visit` datetime NOT NULL,
+  `patient` int(11) DEFAULT NULL,
+  `doctor` int(11) DEFAULT NULL,
+  `date_visit` datetime DEFAULT NULL,
   `office_in_hospital` varchar(10) DEFAULT NULL,
-  `symptoms` int(11) NOT NULL,
-  `diagnosis` int(11) NOT NULL,
-  `prescription` int(11) NOT NULL
+  `symptoms` int(11) DEFAULT NULL,
+  `diagnosis` int(11) DEFAULT NULL,
+  `prescription` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -440,16 +441,17 @@ INSERT INTO `visit` (`id`, `patient`, `doctor`, `date_visit`, `office_in_hospita
 --
 -- Индексы таблицы `blood_type`
 --
-ALTER TABLE `blood_type`
+
+ALTER TABLE `blood_type` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `diagnosis`
 --
 ALTER TABLE `diagnosis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `doctor`
@@ -463,11 +465,9 @@ ALTER TABLE `doctor`
 --
 -- Индексы таблицы `gender`
 --
-ALTER TABLE `gender`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `gen` (`gen`);
-  ON DELETE SET NULL;
-
+ALTER TABLE `gender` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
 --
 -- Индексы таблицы `medicine`
 --
@@ -505,22 +505,22 @@ ALTER TABLE `patient`
 -- Индексы таблицы `post`
 --
 ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `prescription`
 --
 ALTER TABLE `prescription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `specialization`
 --
 ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `symptoms_patients`
@@ -549,8 +549,8 @@ ALTER TABLE `visit`
 --
 -- AUTO_INCREMENT для таблицы `blood_type`
 --
-ALTER TABLE `blood_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `blood_type` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблицы `diagnosis`

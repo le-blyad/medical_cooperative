@@ -109,8 +109,9 @@ INSERT INTO `doctor` (`id`, `last_name`, `first_name`, `patronymic`, `date_of_bi
 --
 
 CREATE TABLE `gender` (
-  `id` int(11) NOT NULL,
-  `gen` varchar(50) DEFAULT NULL
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gen` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -118,8 +119,8 @@ CREATE TABLE `gender` (
 --
 
 INSERT INTO `gender` (`id`, `gen`) VALUES
-(2, 'Женский'),
-(1, 'Мужской');
+(1, 'Женский'),
+(2, 'Мужской');
 
 -- --------------------------------------------------------
 
@@ -449,8 +450,8 @@ ALTER TABLE `blood_type`
 -- Индексы таблицы `diagnosis`
 --
 ALTER TABLE `diagnosis`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `doctor`
@@ -464,11 +465,9 @@ ALTER TABLE `doctor`
 --
 -- Индексы таблицы `gender`
 --
-ALTER TABLE `gender`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `gen` (`gen`);
-  ON DELETE SET NULL;
-
+ALTER TABLE `gender` 
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
+  ADD PRIMARY KEY (`id`);
 --
 -- Индексы таблицы `medicine`
 --
@@ -506,22 +505,22 @@ ALTER TABLE `patient`
 -- Индексы таблицы `post`
 --
 ALTER TABLE `post`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `prescription`
 --
 ALTER TABLE `prescription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `specialization`
 --
 ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,
   ADD PRIMARY KEY (`id`);
-  ON DELETE SET NULL;
 
 --
 -- Индексы таблицы `symptoms_patients`
