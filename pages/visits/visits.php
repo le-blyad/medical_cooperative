@@ -11,6 +11,7 @@ $sql = "SELECT
             d.patronymic as doctor_patronymic,
             v.date_visit,
             v.office_in_hospital,
+            v.id,
             sym.symptom,
             diag.string as diagnosis,
             pres.name_prescription as prescription,
@@ -37,6 +38,7 @@ if (!$result) {
 <table class="table">
     <thead>
         <tr>
+            <th>Номер приёма</th>
             <th>Пациент</th>
             <th>Врач</th>
             <th>Дата посещения</th>
@@ -54,6 +56,7 @@ if (!$result) {
             $office = $row['office_in_hospital'] ?? 'На дому';
         ?>
             <tr>
+                <td><?= htmlspecialchars($row['id']) ?></td>
                 <td><?= htmlspecialchars("{$row['patient_last_name']} {$row['patient_first_name']} {$row['patient_patronymic']}") ?></td>
                 <td><?= htmlspecialchars("{$row['doctor_last_name']} {$row['doctor_first_name']} {$row['doctor_patronymic']}") ?></td>
                 <td><?= htmlspecialchars($formatted_date) ?></td>
