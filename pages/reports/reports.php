@@ -308,7 +308,7 @@ $queries = [
                 <h2 class="h4 mb-3"><?= $query['title'] ?></h2>
                 
                 <?php if (!empty($query['filter_form']) && $index == 7): ?>
-                    <form method="get" class="report-filter mb-4" action="#report-8">
+                    <form method="get" class="report-filter mb-4">
                         <input type="hidden" name="page" value="reports">
                         
                         <div class="form-row">
