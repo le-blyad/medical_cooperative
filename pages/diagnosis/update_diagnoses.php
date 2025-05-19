@@ -2,7 +2,6 @@
 require_once '../../includes/config.php';
 
 $result = $conn->query("SELECT id, string FROM diagnosis");
-$updated = 0;
 
 while ($row = $result->fetch_assoc()) {
     $newDiagnosis = $row['string'];
@@ -23,10 +22,9 @@ while ($row = $result->fetch_assoc()) {
         $stmt = $conn->prepare("UPDATE diagnosis SET string = ? WHERE id = ?");
         $stmt->bind_param("si", $newDiagnosis, $row['id']);
         $stmt->execute();
-        $updated++;
     }
 }
 
-header("Location: diagnosis.php?updated={$updated}");
+header("Location: diagnosis.php");
 $conn->close();
 ?>

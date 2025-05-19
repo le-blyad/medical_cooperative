@@ -136,17 +136,6 @@ require_once 'includes/config.php';
         </div>
 
         <div class="dashboard-item">
-            <h2>Лекарства</h2>
-            <p>Всего лекарств: 
-                <?php 
-                    $result = $conn->query("SELECT COUNT(*) as cnt FROM medicine");
-                    echo $result->fetch_assoc()['cnt'];
-                    ?>
-            </p>
-            <a href="pages/medicine/medicine.php" class="btn">Перейти</a>
-        </div>
-
-        <div class="dashboard-item">
             <h2>Рецепты</h2>
             <p>Всего рецептов: 
                 <?php 

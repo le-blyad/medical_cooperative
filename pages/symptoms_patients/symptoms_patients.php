@@ -2,25 +2,40 @@
 require_once '../../includes/header.php';
 require_once '../../includes/config.php';
 
-$sql = "SELECT s.symptom
-        FROM symptoms_patients s";
-
+$sql = "SELECT * FROM symptoms_patients";
 $result = $conn->query($sql);
 ?>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Симпотомы</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php while($row = $result->fetch_assoc()): ?>
-        <tr>
-            <td><?= htmlspecialchars($row['symptom']) ?></td>
-        </tr>
-        <?php endwhile; ?>
-    </tbody>
-</table>
+<h2>Список симптомов пациентов</h2>
+<a class="button_change-add" href="pages/symptoms_patients/symptoms_patients_insert.php">Добавить</a>
 
-<?php require_once '../../includes/footer.php'; ?>
+<?php if ($result->num_rows > 0): ?>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Симптом</th>
+                <th colspan="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php while($row = $result->fetch_assoc()): ?>
+            <tr>
+                <td><?= htmlspecialchars($row['symptom']) ?></td>
+                <td> 
+                    <a class="button_change-update" href="pages/symptoms_patients/symptoms_patients_update.php?id=<?= $row['id'] ?>">Изменить</a> 
+                </td>
+                <td>
+                    <a class="button_change-delete" href="pages/symptoms_patients/symptoms_patients_delete.php?id=<?= $row['id'] ?>" 
+                    onclick="return confirm('Вы уверены, что хотите удалить?')">Удалить</a>
+                </td>
+            </tr>
+            <?php endwhile; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>Нет данных о симптомах.</p>
+<?php endif;
+
+$conn->close();
+require_once '../../includes/footer.php';
+?>

@@ -478,11 +478,36 @@ ALTER TABLE `patient`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Индексы таблицы `specialization`
+--
+ALTER TABLE `specialization`
+  ADD PRIMARY KEY (`id`);
+  
+  
+--
+-- Индексы таблицы `post`
+--
+ALTER TABLE `medicine`
+  ADD PRIMARY KEY (`id`);
+  
+--
+-- Индексы таблицы `specialization`
+--
+ALTER TABLE `symptoms_patients`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
-
+ALTER TABLE `name_of_the_medicine`
+  ADD PRIMARY KEY (`id`);
+--
+-- AUTO_INCREMENT для таблицы `passport`
+--
+ALTER TABLE `passport`
+ ADD PRIMARY KEY (`id`);
 --
 -- AUTO_INCREMENT для таблицы `blood_type`
 --
@@ -513,13 +538,46 @@ ALTER TABLE `gender`
 ALTER TABLE `patient`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
+ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT для таблицы `post`
 --
 ALTER TABLE `post`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
+--
+-- AUTO_INCREMENT для таблицы `specialization`
+--
+ALTER TABLE `specialization`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
 
+--
+-- AUTO_INCREMENT для таблицы `symptoms_patients`
+--
+ALTER TABLE `symptoms_patients`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+COMMIT;
+--
+-- AUTO_INCREMENT для таблицы `medicine`
+--
+ALTER TABLE `medicine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+COMMIT;
+
+--
+-- AUTO_INCREMENT для таблицы `name_of_the_medicine`
+--
+ALTER TABLE `name_of_the_medicine`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+COMMIT;
+--
+-- AUTO_INCREMENT для таблицы `passport`
+--
+ALTER TABLE `passport`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
