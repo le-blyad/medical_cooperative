@@ -308,7 +308,7 @@ $queries = [
                 <h2 class="h4 mb-3"><?= $query['title'] ?></h2>
                 
                 <?php if (!empty($query['filter_form']) && $index == 7): ?>
-                    <form method="get" class="report-filter mb-4">
+                    <form method="get" class="report-filter mb-4" action="#report-8">
                         <input type="hidden" name="page" value="reports">
                         
                         <div class="form-row">
@@ -326,7 +326,7 @@ $queries = [
                             <div class="form-group col-md-3">
                                 <label for="patient">Пациент:</label>
                                 <select name="patient" id="patient" class="form-control">
-                                    <option value="">Все пациенты</option>
+                                    <option value="">-</option>
                                     <?php foreach ($patients as $patient): ?>
                                         <option value="<?= $patient['id'] ?>" <?= $selected_patient == $patient['id'] ? 'selected' : '' ?>>
                                             <?= htmlspecialchars($patient['name']) ?>

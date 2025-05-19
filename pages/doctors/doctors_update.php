@@ -5,7 +5,6 @@ require_once '../../includes/config.php';
 $id = $_GET['id'];
 $doctor_result = $conn->query("SELECT * FROM doctor WHERE id = $id");
 $doctor = $doctor_result->fetch_assoc();
-
 $specializations = $conn->query("SELECT * FROM specialization");
 $posts = $conn->query("SELECT * FROM post");
 ?>
