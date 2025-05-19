@@ -21,11 +21,7 @@ $blood_types = $conn->query("SELECT * FROM blood_type");
         <form method="post" action="pages/patients/patients_update_post.php">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td>
-                        <input type="text" value="<?= $patient['id'] ?>" readonly>
-                        <input type="hidden" name="id" value="<?= $patient['id'] ?>">
-                    </td>
+                    <input name="id" type="hidden" value="<?= $patient['id'] ?>">
                 </tr>
                 <tr>
                     <td><strong>Фамилия:</strong></td>

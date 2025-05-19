@@ -18,11 +18,7 @@ $posts = $conn->query("SELECT * FROM post");
             <input type="hidden" name="id" value="<?= $doctor['id'] ?>">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td>
-                    <input type="text" value="<?= $doctor['id'] ?>" readonly>
-                    <input type="hidden" name="id" value="<?= $doctor['id'] ?>">
-                    </td>
+                    <input name="id" type="hidden" value="<?= $doctor['id'] ?>">
                 </tr>
             <tr>
                 <tr>

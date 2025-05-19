@@ -18,8 +18,7 @@ $medicines = $conn->query("SELECT id, name FROM medicine");
         <form name="form1" method="post" action="pages/name_of_the_medicine/name_of_the_medicine_update_post.php">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td><input name="id" type="text" value="<?= $row['id'] ?>" readonly></td>
+                    <input name="id" type="hidden" value="<?= $row['id'] ?>">
                 </tr>
                 <tr>
                     <td><strong>Номер посещения:</strong></td>

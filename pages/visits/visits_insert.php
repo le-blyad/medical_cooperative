@@ -11,7 +11,7 @@ $prescriptions = $conn->query("SELECT id, name_prescription FROM prescription");
 ?>
 
 <h2>Добавить посещение</h2>
-<form method="POST" action="visit_insert_post.php">
+<form method="POST" action="pages/visits/visits_insert_post.php">
     <div class="form-group">
         <label>Пациент:</label>
         <select name="patient" class="form-control" required>

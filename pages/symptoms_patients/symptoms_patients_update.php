@@ -15,8 +15,7 @@ $row = $result->fetch_assoc();
         <form name="form1" method="post" action="pages/symptoms_patients/symptoms_patients_update_post.php">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td><input name="id" type="text" value="<?= $row['id'] ?>" readonly></td>
+                    <input name="id" type="hidden" value="<?= $row['id'] ?>">
                 </tr>
                 <tr>
                     <td><strong>Симптом:</strong></td>

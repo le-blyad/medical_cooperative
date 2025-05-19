@@ -27,8 +27,7 @@ $issued_by_whom = $conn->query("SELECT id, issued_by_whom FROM passport");
             <input type="hidden" name="id" value="<?= $passport['id'] ?>">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td><input type="text" value="<?= $passport['id'] ?>" readonly></td>
+                    <input name="id" type="hidden" value="<?= $passport['id'] ?>">
                 </tr>
                 <tr>
                     <td><strong>Серия:</strong></td>

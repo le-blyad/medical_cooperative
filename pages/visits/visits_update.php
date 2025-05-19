@@ -29,8 +29,7 @@ $prescriptions = $conn->query("SELECT id, name_prescription FROM prescription");
             <input type="hidden" name="id" value="<?= $visit['id'] ?>">
             <table>
                 <tr>
-                    <td><strong>ID:</strong></td>
-                    <td><input type="text" value="<?= $visit['id'] ?>" readonly></td>
+                    <input name="id" type="hidden" value="<?= $visit['id'] ?>">
                 </tr>
                 <tr>
                     <td><strong>Пациент:</strong></td>
