@@ -6,11 +6,13 @@ $id = $_GET['id'];
 $result = $conn->query("SELECT * FROM name_of_the_medicine WHERE id = $id");
 $row = $result->fetch_assoc();
 
-// Получаем список лекарств для выпадающего списка
 $medicines = $conn->query("SELECT id, name FROM medicine");
+$visits = $conn->query("SELECT v.id, CONCAT(p.last_name, ' ', p.first_name) as patient_name, v.date_visit 
+                         FROM visit v 
+                         JOIN patient p ON v.patient = p.id");
 ?>
 
-<a class="button_a" href="name_of_the_medicine.php">Вернуться</a>
+<a class="button_a" href="pages/name_of_the_medicine/name_of_the_medicine.php">Вернуться</a>
 
 <div class="main-interaction_block">
     <div class="interaction_block">
@@ -21,8 +23,16 @@ $medicines = $conn->query("SELECT id, name FROM medicine");
                     <input name="id" type="hidden" value="<?= $row['id'] ?>">
                 </tr>
                 <tr>
-                    <td><strong>Номер посещения:</strong></td>
-                    <td><input name="visit" type="text" value="<?= htmlspecialchars($row['visit']) ?>" required></td>
+                    <td><strong>Посещение:</strong></td>
+                    <td>
+                        <select name="visit" required>
+                            <?php while($visit = $visits->fetch_assoc()): ?>
+                                <option value="<?= $visit['id'] ?>" <?= $visit['id'] == $row['visit'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($visit['patient_name']) ?> - <?= htmlspecialchars(date('d.m.Y', strtotime($visit['date_visit']))) ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><strong>Лекарство:</strong></td>

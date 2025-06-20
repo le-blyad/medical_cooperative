@@ -2,9 +2,13 @@
 require_once '../../includes/header.php';
 require_once '../../includes/config.php';
 
-$sql = "SELECT n.*, m.name as medicine_name
+$sql = "SELECT n.*, m.name as medicine_name, 
+               CONCAT(p.last_name, ' ', p.first_name) as patient_name,
+               v.date_visit as visit_date
         FROM name_of_the_medicine n
         JOIN medicine m ON n.medicine = m.id
+        JOIN visit v ON n.visit = v.id
+        JOIN patient p ON v.patient = p.id
         ORDER BY n.id ASC";
 
 $result = $conn->query($sql);
@@ -17,7 +21,8 @@ $result = $conn->query($sql);
     <table class="table">
         <thead>
             <tr>
-                <th>Номер посещения</th>
+                <th>Пациент</th>
+                <th>Дата посещения</th>
                 <th>Лекарство</th>
                 <th>Дозировка</th>
                 <th>Продолжительность курса</th>
@@ -27,7 +32,8 @@ $result = $conn->query($sql);
         <tbody>
             <?php while($row = $result->fetch_assoc()): ?>
             <tr>
-                <td><?= htmlspecialchars($row['visit']) ?></td>
+                <td><?= htmlspecialchars($row['patient_name']) ?></td>
+                <td><?= htmlspecialchars(date('d.m.Y', strtotime($row['visit_date']))) ?></td>
                 <td><?= htmlspecialchars($row['medicine_name']) ?></td>
                 <td><?= htmlspecialchars($row['dosage']) ?></td>
                 <td><?= htmlspecialchars($row['duration_of_admission']) ?></td>

@@ -2,11 +2,13 @@
 require_once '../../includes/header.php';
 require_once '../../includes/config.php';
 
-// Получаем список лекарств для выпадающего списка
 $medicines = $conn->query("SELECT id, name FROM medicine");
+$visits = $conn->query("SELECT v.id, CONCAT(p.last_name, ' ', p.first_name) as patient_name, v.date_visit 
+                         FROM visit v 
+                         JOIN patient p ON v.patient = p.id");
 ?>
 
-<a class="button_a" href="../name_of_the_medicine.php">Вернуться</a>
+<a class="button_a" href="pages/name_of_the_medicine/name_of_the_medicine.php">Вернуться</a>
 
 <div class="main-interaction_block">
     <div class="interaction_block">
@@ -14,8 +16,16 @@ $medicines = $conn->query("SELECT id, name FROM medicine");
         <form name="form1" method="post" action="pages/name_of_the_medicine/name_of_the_medicine_insert_post.php">
             <table>
                 <tr>
-                    <td><strong>Номер посещения:</strong></td>
-                    <td><input name="visit" type="text" required></td>
+                    <td><strong>Посещение:</strong></td>
+                    <td>
+                        <select name="visit" required>
+                            <?php while($visit = $visits->fetch_assoc()): ?>
+                                <option value="<?= $visit['id'] ?>">
+                                    <?= htmlspecialchars($visit['patient_name']) ?> - <?= htmlspecialchars(date('d.m.Y', strtotime($visit['date_visit']))) ?>
+                                </option>
+                            <?php endwhile; ?>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><strong>Лекарство:</strong></td>

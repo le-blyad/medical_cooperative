@@ -1,5 +1,5 @@
 <?php
-$db = new mysqli('localhost', 'root', '', '');
+$db = new mysqli('localhost', 'kirill', '1234', 'medical_cooperative');
 
 if ($db->connect_error) die("Ошибка подключения: " . $db->connect_error);
 
